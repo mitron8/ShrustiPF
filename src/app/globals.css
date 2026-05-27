@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,200;6..96,300&family=Space+Mono&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -174,4 +175,20 @@ textarea::placeholder {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+.font-editorial {
+  font-family: 'Bodoni Moda', serif;
+}
+
+.font-mono-label {
+  font-family: 'Space Mono', monospace;
+}
+
+.hero-title {
+  color: #f5f1ea;
+  letter-spacing: -0.055em;
+  line-height: 0.82;
+  text-shadow:
+    0 0 40px rgba(255,255,255,0.04),
+    0 0 90px rgba(201,176,102,0.03);
 }
