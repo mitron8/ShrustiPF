@@ -74,11 +74,61 @@ export const projects: Project[] = [
       process:
         'The process moved from visual identity and page sequencing into responsive builds, subtle motion, and a content structure that keeps the brand voice consistent across every section.',
       typography: ['Editorial serif headlines', 'Muted mono labels', 'Uppercase utility text'],
-      palette: [
-        { name: 'Ink', value: '#050505', note: 'Primary surface' },
-        { name: 'Cream', value: '#F4F1EA', note: 'Text and contrast' },
-        { name: 'Olive', value: '#6B6B4A', note: 'Quiet accent' },
-      ],
+     palette: [
+  {
+    name: 'Deep Black',
+    value: '#11110f',
+    note: 'Primary background tone used for cinematic depth.',
+  },
+
+  {
+    name: 'Dark Brown',
+    value: '#17130f',
+    note: 'Layered dark surface for cards and sections.',
+  },
+
+  {
+    name: 'Forest Green',
+    value: '#1e4a40',
+    note: 'Premium accent used for highlights and identity.',
+  },
+
+  {
+    name: 'Warm Gray',
+    value: '#6f675d',
+    note: 'Mid-tone balance for borders and overlays.',
+  },
+
+  {
+    name: 'Stone',
+    value: '#8b8175',
+    note: 'Soft earthy neutral for layered contrast.',
+  },
+
+  {
+    name: 'Taupe',
+    value: '#a99982',
+    note: 'Muted neutral tone for secondary UI elements.',
+  },
+
+  {
+    name: 'Soft Sand',
+    value: '#c8b79f',
+    note: 'Warm elevated neutral for premium softness.',
+  },
+
+  {
+    name: 'Beige',
+    value: '#d8cbb6',
+    note: 'Elegant light tone for balanced contrast.',
+  },
+
+  {
+    name: 'Cream',
+    value: '#f1e8d8',
+    note: 'Primary typography and clean light surface.',
+  },
+],
       showcases: [
         {
           src: 'https://plus.unsplash.com/premium_photo-1723489242223-865b4a8cf7b8?q=80&w=2670&auto=format&fit=crop',
@@ -112,76 +162,387 @@ export const projects: Project[] = [
     },
     featured: true,
   },
-  {
-    id: '2',
-    slug: 'prism',
-    title: 'FREA Bakery, Berlin',
-    category: 'WEB DESIGN',
-    year: '2025',
-    shortDescription: 'A Berlin bakery demo - warm brand, full build, zero templates. Built to make you hungry before you read a single word.',
-    longDescription:
-      'The experience was shaped around calm pacing, tactile product storytelling, and a refined booking path. I focused on balancing editorial composition with clear utility so the bakery feels premium while still guiding visitors toward reservations and key offerings.',
-    projectNotes: 'Built to make browsing feel editorial while keeping reservations and product discovery effortless.',
-    focus: 'Editorial storytelling',
-    scope: 'Frontend experience + booking flow',
-    result: 'Stronger product focus and clearer reservation intent',
-    tags: ['WEB DESIGN', 'NEXT.JS', 'UI DESIGN', 'PRO BONO'],
-    image: 'https://i.pinimg.com/1200x/99/ca/5c/99ca5cf82cf12df8801f7b2bef38d325.jpg',
-    imageAlt: 'Architectural interior with sharp lines and cool reflective surfaces',
-    deliverables: ['Editorial landing page', 'Reservation flow', 'Product story sections'],
-    liveUrl: 'https://frea-demo.vercel.app/',
-    page: {
-      overview:
-        'FREA Bakery, Berlin is a premium bakery concept shaped around editorial pacing, tactile product storytelling, and a reservation flow that feels calm rather than transactional.',
-      challenge:
-        'The challenge was to present a bakery experience with enough restraint to feel premium while still making products and reservations immediately clear.',
-      strategy:
-        'The strategy paired spacious composition, warm contrast, and guided sequencing so the menu, story, and booking path feel aligned.',
-      process:
-        'The process moved through visual hierarchy, section pacing, component systems, and responsive refinement to keep the experience soft but efficient.',
-      typography: ['Editorial headlines', 'Functional utility labels', 'Monospace metadata'],
-      palette: [
-        { name: 'Espresso', value: '#17120f', note: 'Primary shell' },
-        { name: 'Cocoa', value: '#2a2018', note: 'Secondary surface' },
-        { name: 'Stone', value: '#90806d', note: 'Muted contrast' },
-        { name: 'Oat', value: '#d4c4ad', note: 'Warm neutral' },
-        { name: 'Cream', value: '#f5eadc', note: 'Light contrast' },
-      ],
-      showcases: [
-        {
-          src: 'https://i.pinimg.com/1200x/99/ca/5c/99ca5cf82cf12df8801f7b2bef38d325.jpg',
-          alt: 'Architectural interior with warm reflective geometry',
-          caption: 'Hero framing',
-        },
-        {
-          src: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2670&auto=format&fit=crop',
-          alt: 'Product workspace with warm screens and structured shadows',
-          caption: 'Product storytelling',
-        },
-      ],
-      gallery: [
-        {
-          src: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2670&auto=format&fit=crop',
-          alt: 'Warm bakery interior with precise lighting',
-          caption: 'Bakery interior',
-        },
-        {
-          src: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2670&auto=format&fit=crop',
-          alt: 'Refined product detail with clean interface surfaces',
-          caption: 'Product detail',
-        },
-        {
-          src: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=2670&auto=format&fit=crop',
-          alt: 'Mobile reservation flow with ordered lines and light',
-          caption: 'Reservation flow',
-        },
-      ],
-      outcomes: ['Stronger product focus', 'Clearer reservation intent', 'A more premium brand feel'],
-    },
-    featured: true,
+  
+{
+  id: '2',
+  slug: 'mizu',
+  title: 'Mizu Studio',
+  category: 'CREATIVE DEVELOPMENT',
+  year: '2026',
+
+  shortDescription:
+    'A cinematic creative studio experience blending motion, editorial layouts, and immersive interactions into a modern premium digital presence.',
+
+  longDescription:
+    'Mizu Studio was designed as a motion-first digital experience focused on emotional storytelling, minimal aesthetics, and cinematic pacing. The project explored how interaction, typography, and smooth transitions could shape a stronger sense of immersion while maintaining clarity and usability across the experience.',
+
+  projectNotes:
+    'Built around motion storytelling, premium typography, and smooth interaction systems that create a calm but immersive browsing experience.',
+
+  focus: 'Motion-driven storytelling',
+
+  scope:
+    'Creative direction + frontend experience + interaction design',
+
+  result:
+    'A more immersive brand presence with stronger emotional engagement and refined visual identity.',
+
+  tags: [
+    'NEXT.JS',
+    'FRAMER MOTION',
+    'CREATIVE DEVELOPMENT',
+    'UI DESIGN',
+    'MOTION DESIGN',
+  ],
+
+  image:
+    'https://plus.unsplash.com/premium_photo-1678937608953-f4821e42dcdb?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+
+  imageAlt:
+    'Modern cinematic workspace with dark contrast and editorial lighting',
+
+  deliverables: [
+    'Motion-first landing page',
+    'Interactive scroll storytelling',
+    'Responsive navigation system',
+    'Editorial interface design',
+    'Animated component system',
+  ],
+
+  liveUrl: 'https://mizu-zeta.vercel.app/',
+
+  page: {
+    overview:
+      'Mizu Studio is a cinematic creative agency concept focused on combining editorial composition, immersive motion, and modern interaction systems into a premium digital experience.',
+
+    challenge:
+      'The challenge was creating a highly interactive experience that still felt minimal, calm, and refined without overwhelming the visitor with excessive motion or visual noise.',
+
+    strategy:
+      'The strategy focused on balancing emotional storytelling with usability by combining cinematic scroll pacing, layered depth, restrained typography, and smooth transitions throughout the interface.',
+
+    process:
+      'The process involved building modular interaction systems, refining motion timing, experimenting with editorial layouts, and carefully shaping spacing and typography to maintain a premium visual rhythm across all sections.',
+
+    typography: [
+      'Editorial oversized headlines',
+      'Minimal utility labels',
+      'High-spacing uppercase metadata',
+    ],
+
+    palette: [
+      {
+        name: 'Ivory',
+        value: '#f7f4ef',
+        note: 'Primary background',
+      },
+      {
+        name: 'Midnight',
+        value: '#0f0f0f',
+        note: 'Dark contrast surfaces',
+      },
+      {
+        name: 'Graphite',
+        value: '#1a1a1a',
+        note: 'Secondary dark layers',
+      },
+      {
+        name: 'Smoke',
+        value: '#8b8b8b',
+        note: 'Muted typography',
+      },
+      {
+        name: 'Pure White',
+        value: '#ffffff',
+        note: 'Interactive highlights',
+      },
+    ],
+
+    showcases: [
+      {
+        src:
+          'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2670&auto=format&fit=crop',
+
+        alt:
+          'Dark cinematic workspace with layered screens and premium lighting',
+
+        caption: 'Motion-first hero experience',
+      },
+
+      {
+        src:
+          'https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=2670&auto=format&fit=crop',
+
+        alt:
+          'Minimal editorial workspace with soft lighting and modern layout',
+
+        caption: 'Editorial composition system',
+      },
+    ],
+
+    gallery: [
+      {
+        src:
+          'https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2670&auto=format&fit=crop',
+
+        alt:
+          'Creative team workspace with cinematic contrast and layered depth',
+
+        caption: 'Studio atmosphere',
+      },
+
+      {
+        src:
+          'https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=2670&auto=format&fit=crop',
+
+        alt:
+          'Interactive digital interface with modern motion composition',
+
+        caption: 'Interactive storytelling',
+      },
+
+      {
+        src:
+          'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2670&auto=format&fit=crop',
+
+        alt:
+          'Minimal responsive interface with structured visual hierarchy',
+
+        caption: 'Responsive interface system',
+      },
+    ],
+
+    outcomes: [
+      'More immersive storytelling',
+      'Stronger premium perception',
+      'Cleaner interaction flow',
+      'Improved visual consistency',
+    ],
   },
+
+  featured: true,
+},
+{
+  id: '3',
+
+  slug: 'frea-bakery',
+
+  title: 'FREA Bakery, Berlin',
+
+  category: 'WEB DESIGN',
+
+  year: '2025',
+
+  shortDescription:
+    'A Berlin bakery demo — warm brand, full build, zero templates. Built to make you hungry before you read a single word.',
+
+  longDescription:
+    'FREA Bakery was designed as a warm artisan bakery experience focused on appetite, trust, and effortless booking flow. The project explored how editorial composition, food-first storytelling, and softer visual pacing could create a premium bakery presence that feels human instead of overly corporate.',
+
+  projectNotes:
+    'Built around warmth, appetite-driven storytelling, and an editorial layout system that keeps reservations and product discovery effortless.',
+
+  focus: 'Warm editorial storytelling',
+
+  scope:
+    'Brand direction + frontend experience + reservation flow',
+
+  result:
+    'Stronger emotional brand presence and clearer reservation intent.',
+
+  tags: [
+    'WEB DESIGN',
+    'NEXT.JS',
+    'TAILWIND CSS',
+    'FRAMER MOTION',
+    'PRO BONO',
+  ],
+
+  image:
+    'https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=2670&auto=format&fit=crop',
+
+  imageAlt:
+    'Warm artisan bakery interior with pastries and soft natural lighting',
+
+  deliverables: [
+    'Full bakery brand identity',
+    'Editorial landing page',
+    'Reservation flow',
+    'Pre-order experience',
+    'Coffee program section',
+    'Responsive multi-page website',
+  ],
+
+  liveUrl: 'https://frea-demo.vercel.app/',
+
+  page: {
+    overview:
+      'FREA Bakery, Berlin is a modern artisan bakery concept built around warmth, appetite-driven storytelling, and a calm reservation experience that feels inviting rather than transactional.',
+
+    challenge:
+      'The challenge was creating a bakery website that felt warm, human, and editorial while still keeping reservations, menu discovery, and navigation clear and effortless.',
+
+    strategy:
+      'The strategy focused on combining warm visual pacing, real food photography, editorial typography, and guided interaction patterns so visitors emotionally connect with the bakery before engaging with the booking experience.',
+
+    process:
+      'The process moved through brand exploration, typography refinement, food-first visual storytelling, responsive layout systems, and interaction polishing to ensure the experience felt soft, premium, and mobile-friendly across every section.',
+
+    typography: [
+      'Playfair Display — warm editorial serif',
+      'Inter — clean readable sans-serif',
+      'Minimal utility metadata',
+    ],
+
+    palette: [
+      {
+        name: 'Deep Brown',
+        value: '#2B1D17',
+        note: 'Primary shell',
+      },
+
+      {
+        name: 'Burgundy',
+        value: '#6E2C2C',
+        note: 'Accent contrast',
+      },
+
+      {
+        name: 'Cream',
+        value: '#F6EBDD',
+        note: 'Soft light base',
+      },
+
+      {
+        name: 'Warm Beige',
+        value: '#D9BEA0',
+        note: 'Muted warmth',
+      },
+
+      {
+        name: 'Wheat',
+        value: '#C69C6D',
+        note: 'Natural artisan tone',
+      },
+    ],
+
+    showcases: [
+      {
+        src:
+          'https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=2670&auto=format&fit=crop',
+
+        alt:
+          'Warm artisan bakery interior with pastries and soft lighting',
+
+        caption: 'Warm editorial hero framing',
+      },
+
+      {
+        src:
+          'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2670&auto=format&fit=crop',
+
+        alt:
+          'Coffee and bakery presentation with warm editorial composition',
+
+        caption: 'Food-first storytelling',
+      },
+    ],
+
+    gallery: [
+      {
+        src:
+          'https://images.unsplash.com/photo-1483695028939-5bb13f8648b0?q=80&w=2670&auto=format&fit=crop',
+
+        alt:
+          'Bakery counter with warm pastries and artisan atmosphere',
+
+        caption: 'Bakery atmosphere',
+      },
+
+      {
+        src:
+          'https://images.unsplash.com/photo-1517686469429-8bdb88b9f907?q=80&w=2670&auto=format&fit=crop',
+
+        alt:
+          'Editorial bakery menu and food presentation details',
+
+        caption: 'House specials section',
+      },
+
+      {
+        src:
+          'https://images.unsplash.com/photo-1556740749-887f6717d7e4?q=80&w=2670&auto=format&fit=crop',
+
+        alt:
+          'Mobile-friendly reservation and pre-order experience',
+
+        caption: 'Reservation flow',
+      },
+    ],
+
+    outcomes: [
+      'Stronger appetite-driven storytelling',
+      'Clearer reservation flow',
+      'Warmer emotional brand presence',
+      'Distinct visual identity within F&B space',
+    ],
+
+    decisions: [
+      {
+        title:
+          'Crafted daily. Served with warmth.',
+
+        description:
+          'The hero copy was intentionally written to feel human and conversational — like the bakery itself was speaking rather than a marketing team.',
+      },
+
+      {
+        title:
+          'Food before atmosphere',
+
+        description:
+          'The House Specials section prioritised real food photography and appetite-driven presentation because bakery brands sell visually before anything else.',
+      },
+
+      {
+        title:
+          'Today’s Favourite floating card',
+
+        description:
+          'A small interactive detail added to the hero section to make the experience feel alive, dynamic, and less template-driven.',
+      },
+    ],
+
+    comparison: {
+      title:
+        'Why show both FREA and Die Creme?',
+
+      left: {
+        name: 'Die Creme',
+        style:
+          'Dark · Cinematic · Minimal · Premium café energy',
+      },
+
+      right: {
+        name: 'FREA Bakery',
+        style:
+          'Light · Warm · Editorial · Artisan bakery energy',
+      },
+
+      conclusion:
+        'Same industry. Completely different aesthetic. This demonstrates creative range and the ability to adapt visual language depending on the brand personality.',
+    },
+
+    closing:
+      'Two bakeries. Two completely different worlds. Both built from nothing — because that’s how I work.',
+  },
+
+  featured: true,
+}
+
+,
   {
-    id: '3',
+    id: '4',
     slug: 'vertex',
     title: 'Editorial Brand Templates',
     category: '',

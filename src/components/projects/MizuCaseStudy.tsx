@@ -12,12 +12,8 @@ import type { ReactNode } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import BackToHomeLink from '@/components/layout/BackToHomeLink'
-
-import type { Project } from '@/data/projects'
-
 interface Props {
-  project: Project
+  project: any
 }
 
 const ease = [0.22, 1, 0.36, 1] as const
@@ -130,7 +126,6 @@ function SectionLabel({
   return (
     <p
       className="
-        font-mono-label
         text-[10px]
         uppercase
         tracking-[0.24em]
@@ -149,7 +144,7 @@ function SectionLabel({
 // MAIN
 // ─────────────────────────────────────────────
 
-export default function DieCremeCaseStudy({
+export default function MizuCaseStudy({
   project,
 }: Props) {
   const { scrollYProgress } =
@@ -162,7 +157,7 @@ export default function DieCremeCaseStudy({
   )
 
   return (
-    <article className="relative overflow-hidden bg-black text-[var(--text-primary)]">
+    <article className="relative overflow-hidden bg-black text-[#f4f1ea]">
 
       {/* OVERLAY */}
       <div className="absolute inset-0 z-[1] bg-black/40" />
@@ -190,7 +185,7 @@ export default function DieCremeCaseStudy({
           "
           style={{
             background:
-              'radial-gradient(circle, rgba(80,65,35,0.045) 0%, rgba(40,30,15,0.015) 45%, transparent 72%)',
+              'radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%)',
           }}
         />
       </div>
@@ -199,11 +194,8 @@ export default function DieCremeCaseStudy({
 
         {/* HERO */}
         <section className="px-4 pb-24 pt-28 sm:px-6 md:px-10 lg:px-16 lg:pb-32 lg:pt-32">
-          <div className="mx-auto max-w-7xl">
 
-            <Reveal>
-              <BackToHomeLink />
-            </Reveal>
+          <div className="mx-auto max-w-7xl">
 
             <div className="mt-14 grid gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
 
@@ -216,7 +208,6 @@ export default function DieCremeCaseStudy({
                 <Reveal delay={0.1}>
                   <p
                     className="
-                      font-mono-label
                       text-[10px]
                       uppercase
                       tracking-[0.28em]
@@ -235,7 +226,6 @@ export default function DieCremeCaseStudy({
                     className="
                       mt-5
                       max-w-5xl
-                      font-editorial
                       font-light
                       leading-[0.82]
                       tracking-[-0.06em]
@@ -287,7 +277,6 @@ export default function DieCremeCaseStudy({
                         <div key={label}>
                           <p
                             className="
-                              font-mono-label
                               text-[9px]
                               uppercase
                               tracking-[0.18em]
@@ -367,7 +356,6 @@ export default function DieCremeCaseStudy({
 
                       <p
                         className="
-                          font-mono-label
                           text-[10px]
                           uppercase
                           tracking-[0.22em]
@@ -384,7 +372,6 @@ export default function DieCremeCaseStudy({
                         className="
                           mt-4
                           max-w-md
-                          font-editorial
                           text-[clamp(2rem,5vw,3.8rem)]
                           font-light
                           leading-[0.9]
@@ -393,8 +380,7 @@ export default function DieCremeCaseStudy({
                         "
                       >
                         Editorial storytelling
-                        meets modern digital
-                        branding.
+                        meets cinematic motion.
                       </h3>
                     </div>
                   </div>
@@ -404,13 +390,90 @@ export default function DieCremeCaseStudy({
           </div>
         </section>
 
-        {/* OPENING */}
-        <section className="px-4 py-24 sm:px-6 md:px-10 lg:px-16 lg:py-40">
+        {/* PHILOSOPHY */}
+        <section className="relative overflow-hidden px-4 py-28 sm:px-6 md:px-10 lg:px-16 lg:py-44">
+
           <div className="mx-auto max-w-7xl">
 
             <Reveal>
               <SectionLabel>
-                01 — OVERVIEW
+                01 — PHILOSOPHY
+              </SectionLabel>
+            </Reveal>
+
+            <Reveal delay={0.08}>
+              <div className="mt-10 max-w-6xl">
+
+                <h2
+                  className="
+                    font-light
+                    leading-[0.86]
+                    tracking-[-0.06em]
+                    text-[clamp(3rem,9vw,8rem)]
+                  "
+                >
+                  Motion wasn’t
+                  added for effect.
+                  <br />
+                  It became the
+                  interface itself.
+                </h2>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.15}>
+              <div className="mt-14 grid gap-12 lg:grid-cols-[0.45fr_0.55fr]">
+
+                <div>
+                  <p
+                    className="
+                      text-[10px]
+                      uppercase
+                      tracking-[0.24em]
+                    "
+                    style={{
+                      color:
+                        'rgba(244,241,234,0.42)',
+                    }}
+                  >
+                    EXPERIENCE DIRECTION
+                  </p>
+                </div>
+
+                <div>
+                  <p
+                    className="
+                      max-w-2xl
+                      text-[18px]
+                      leading-[1.9]
+                      md:text-[21px]
+                    "
+                    style={{
+                      color:
+                        'rgba(244,241,234,0.68)',
+                    }}
+                  >
+                    Mizu was designed around the idea that
+                    digital experiences should feel cinematic
+                    instead of mechanical. Every transition,
+                    layer, interaction, and motion sequence
+                    was crafted to create emotional pacing
+                    while still maintaining clarity.
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
+        {/* OVERVIEW */}
+        <section className="px-4 py-24 sm:px-6 md:px-10 lg:px-16 lg:py-40">
+
+          <div className="mx-auto max-w-7xl">
+
+            <Reveal>
+              <SectionLabel>
+                02 — OVERVIEW
               </SectionLabel>
             </Reveal>
 
@@ -420,7 +483,6 @@ export default function DieCremeCaseStudy({
                 className="
                   mt-8
                   max-w-6xl
-                  font-editorial
                   font-light
                   leading-[0.9]
                   tracking-[-0.05em]
@@ -431,86 +493,9 @@ export default function DieCremeCaseStudy({
           </div>
         </section>
 
-        {/* STORY */}
-        <section className="px-4 py-24 sm:px-6 md:px-10 lg:px-16 lg:py-40">
-          <div className="mx-auto grid max-w-7xl gap-16 lg:grid-cols-[0.42fr_0.58fr]">
-
-            {/* LEFT */}
-            <Reveal>
-              <div className="lg:sticky lg:top-32">
-
-                <SectionLabel>
-                  02 — PROCESS
-                </SectionLabel>
-
-                <h2
-                  className="
-                    mt-6
-                    max-w-md
-                    font-editorial
-                    font-light
-                    leading-[0.92]
-                    tracking-[-0.04em]
-                    text-[clamp(2.2rem,5vw,4.5rem)]
-                  "
-                >
-                  Strategy,
-                  identity,
-                  and immersive
-                  storytelling.
-                </h2>
-              </div>
-            </Reveal>
-
-            {/* RIGHT */}
-            <div className="space-y-16">
-
-              {[
-                project.page.challenge,
-                project.page.strategy,
-                project.page.process,
-              ].map((text, i) => (
-                <Reveal
-                  key={i}
-                  delay={i * 0.08}
-                >
-                  <motion.div
-                    whileHover={{
-                      y: -4,
-                    }}
-                    transition={{
-                      duration: 1,
-                      ease,
-                    }}
-                    className="border-b pb-12"
-                    style={{
-                      borderColor:
-                        'rgba(255,255,255,0.08)',
-                    }}
-                  >
-                    <p
-                      className="
-                        max-w-2xl
-                        text-[17px]
-                        leading-[1.9]
-                        md:text-[20px]
-                      "
-                      style={{
-                        color:
-                          'rgba(244,241,234,0.68)',
-                      }}
-                    >
-                      {text}
-                    </p>
-                  </motion.div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* SHOWCASE */}
         <section className="px-4 py-24 sm:px-6 md:px-10 lg:px-16 lg:py-40">
+
           <div className="mx-auto max-w-7xl">
 
             <Reveal>
@@ -519,28 +504,10 @@ export default function DieCremeCaseStudy({
               </SectionLabel>
             </Reveal>
 
-            <Reveal delay={0.1}>
-              <h2
-                className="
-                  mt-6
-                  max-w-5xl
-                  font-editorial
-                  font-light
-                  leading-[0.9]
-                  tracking-[-0.05em]
-                  text-[clamp(2.5rem,7vw,5.8rem)]
-                "
-              >
-                Designed like a film.
-                <br />
-                Built like a product.
-              </h2>
-            </Reveal>
-
             <div className="mt-16 space-y-8">
 
               {project.page.showcases.map(
-                (item, i) => (
+                (item: any, i: number) => (
                   <Reveal
                     key={item.src}
                     delay={i * 0.08}
@@ -592,7 +559,6 @@ export default function DieCremeCaseStudy({
 
                           <p
                             className="
-                              font-mono-label
                               text-[10px]
                               uppercase
                               tracking-[0.2em]
@@ -609,12 +575,11 @@ export default function DieCremeCaseStudy({
                             className="
                               mt-4
                               max-w-xl
-                              font-editorial
+                              text-white
+                              text-[clamp(2rem,5vw,4rem)]
                               font-light
                               leading-[0.92]
                               tracking-[-0.04em]
-                              text-white
-                              text-[clamp(2rem,5vw,4rem)]
                             "
                           >
                             {item.caption}
@@ -629,296 +594,33 @@ export default function DieCremeCaseStudy({
           </div>
         </section>
 
-        {/* GALLERY */}
+        {/* PALETTE */}
         <section className="px-4 py-24 sm:px-6 md:px-10 lg:px-16 lg:py-40">
+
           <div className="mx-auto max-w-7xl">
 
             <Reveal>
               <SectionLabel>
-                04 — EDITORIAL DETAILS
+                04 — COLOR SYSTEM
               </SectionLabel>
             </Reveal>
 
-            <div className="mt-14 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+            <div className="mt-16 grid grid-cols-2 gap-5 lg:grid-cols-5">
 
-              {project.page.gallery.map(
-                (item, i) => (
+              {project.page.palette.map(
+                (item: any, i: number) => (
                   <Reveal
-                    key={item.src}
-                    delay={i * 0.08}
+                    key={item.name}
+                    delay={i * 0.05}
                   >
                     <motion.div
                       whileHover={{
-                        y: -8,
-                      }}
-                      transition={{
-                        duration: 1,
-                        ease,
+                        y: -6,
                       }}
                       className="
-                        group
-                        relative
-                        overflow-hidden
-                        rounded-[30px]
+                        rounded-[28px]
                         border
-                      "
-                      style={{
-                        borderColor:
-                          'rgba(255,255,255,0.08)',
-                      }}
-                    >
-                      <div className="relative aspect-[4/5]">
-
-                        <Image
-                          src={item.src}
-                          alt={item.alt}
-                          fill
-                          className="
-                            object-cover
-                            object-center
-                            transition-transform
-                            duration-[2500ms]
-                            group-hover:scale-[1.04]
-                          "
-                        />
-
-                        <div
-                          className="absolute inset-0"
-                          style={{
-                            background:
-                              'linear-gradient(to top, rgba(0,0,0,0.78), rgba(0,0,0,0.05))',
-                          }}
-                        />
-
-                        <div className="absolute bottom-0 left-0 z-20 p-6">
-
-                          <p
-                            className="
-                              max-w-[240px]
-                              font-editorial
-                              text-[clamp(1.3rem,2vw,2rem)]
-                              font-light
-                              leading-[0.95]
-                              tracking-[-0.03em]
-                              text-white
-                            "
-                          >
-                            {item.caption}
-                          </p>
-                        </div>
-                      </div>
-                    </motion.div>
-                  </Reveal>
-                )
-              )}
-            </div>
-          </div>
-        </section>
-
-        {/* PALETTE */}
-        {/* PALETTE */}
-<section className="px-4 py-24 sm:px-6 md:px-10 lg:px-16 lg:py-40">
-  <div className="mx-auto max-w-7xl">
-
-    {/* LABEL */}
-    <Reveal>
-      <SectionLabel>
-        05 — COLOR SYSTEM
-      </SectionLabel>
-    </Reveal>
-
-    {/* HEADING */}
-    <Reveal delay={0.08}>
-      <h2
-        className="
-          mt-6
-          max-w-5xl
-          font-editorial
-          font-light
-          leading-[0.9]
-          tracking-[-0.05em]
-          text-[clamp(2.5rem,7vw,5.5rem)]
-        "
-      >
-        A grounded palette
-        crafted for depth,
-        emotion, and premium
-        digital storytelling.
-      </h2>
-    </Reveal>
-
-    {/* GRID */}
-    <div className="mt-16 grid grid-cols-2 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-
-      {project.page.palette.map((item, i) => (
-        <Reveal
-          key={item.name}
-          delay={i * 0.05}
-        >
-          <motion.div
-            whileHover={{
-              y: -6,
-            }}
-            transition={{
-              duration: 0.8,
-              ease,
-            }}
-            className="
-              group
-              flex
-              items-center
-              gap-5
-              rounded-[28px]
-              border
-              p-5
-            "
-            style={{
-              borderColor:
-                'rgba(255,255,255,0.08)',
-
-              background:
-                'rgba(255,255,255,0.02)',
-
-              backdropFilter:
-                'blur(10px)',
-            }}
-          >
-            {/* COLOR PREVIEW */}
-            <motion.div
-              whileHover={{
-                scale: 1.05,
-                rotate: -2,
-              }}
-              transition={{
-                duration: 0.5,
-              }}
-              className="
-                relative
-                h-20
-                w-20
-                shrink-0
-                overflow-hidden
-                rounded-2xl
-                border
-              "
-              style={{
-                background: item.value,
-
-                borderColor:
-                  'rgba(255,255,255,0.08)',
-              }}
-            >
-              {/* LIGHT */}
-              <div
-                className="absolute inset-0"
-                style={{
-                  background:
-                    'linear-gradient(to bottom right, rgba(255,255,255,0.18), transparent 60%)',
-                }}
-              />
-            </motion.div>
-
-            {/* DETAILS */}
-            <div className="min-w-0 flex-1">
-
-              <p
-                className="
-                  font-mono-label
-                  text-[10px]
-                  uppercase
-                  tracking-[0.2em]
-                "
-                style={{
-                  color:
-                    'rgba(244,241,234,0.42)',
-                }}
-              >
-                COLOR SYSTEM
-              </p>
-
-              <h3
-                className="
-                  mt-2
-                  font-editorial
-                  text-[clamp(1.5rem,3vw,2.3rem)]
-                  font-light
-                  leading-none
-                  tracking-[-0.04em]
-                "
-                style={{
-                  color:
-                    'var(--text-primary)',
-                }}
-              >
-                {item.name}
-              </h3>
-
-              <p
-                className="
-                  mt-2
-                  text-sm
-                  font-medium
-                "
-                style={{
-                  color:
-                    'rgba(244,241,234,0.78)',
-                }}
-              >
-                {item.value}
-              </p>
-
-              <p
-                className="
-                  mt-3
-                  max-w-[260px]
-                  text-sm
-                  leading-relaxed
-                "
-                style={{
-                  color:
-                    'rgba(244,241,234,0.52)',
-                }}
-              >
-                {item.note}
-              </p>
-            </div>
-          </motion.div>
-        </Reveal>
-      ))}
-    </div>
-  </div>
-</section>
-
-        {/* OUTCOMES */}
-        <section className="px-4 py-24 sm:px-6 md:px-10 lg:px-16 lg:py-40">
-          <div className="mx-auto max-w-7xl">
-
-            <Reveal>
-              <SectionLabel>
-                06 — OUTCOMES
-              </SectionLabel>
-            </Reveal>
-
-            <div className="mt-14 grid gap-8 md:grid-cols-3">
-
-              {project.page.outcomes.map(
-                (item, i) => (
-                  <Reveal
-                    key={item}
-                    delay={i * 0.08}
-                  >
-                    <motion.div
-                      whileHover={{
-                        y: -5,
-                      }}
-                      transition={{
-                        duration: 1,
-                        ease,
-                      }}
-                      className="
-                        rounded-[30px]
-                        border
-                        p-8
+                        p-5
                       "
                       style={{
                         borderColor:
@@ -928,16 +630,36 @@ export default function DieCremeCaseStudy({
                           'rgba(255,255,255,0.02)',
                       }}
                     >
-                      <p
+                      <div
                         className="
-                          font-editorial
-                          text-[clamp(1.8rem,3vw,3rem)]
+                          h-28
+                          w-full
+                          rounded-2xl
+                        "
+                        style={{
+                          background:
+                            item.value,
+                        }}
+                      />
+
+                      <h3
+                        className="
+                          mt-5
+                          text-2xl
                           font-light
-                          leading-[0.95]
-                          tracking-[-0.04em]
                         "
                       >
-                        {item}
+                        {item.name}
+                      </h3>
+
+                      <p
+                        className="mt-2 text-sm"
+                        style={{
+                          color:
+                            'rgba(244,241,234,0.6)',
+                        }}
+                      >
+                        {item.value}
                       </p>
                     </motion.div>
                   </Reveal>
@@ -949,6 +671,7 @@ export default function DieCremeCaseStudy({
 
         {/* FINAL CTA */}
         <section className="px-4 pb-32 pt-20 sm:px-6 md:px-10 lg:px-16">
+
           <div
             className="
               mx-auto
@@ -965,18 +688,15 @@ export default function DieCremeCaseStudy({
             <Reveal>
               <h2
                 className="
-                  font-editorial
                   font-light
                   leading-[0.9]
                   tracking-[-0.06em]
                   text-[clamp(3rem,8vw,7rem)]
                 "
               >
-                Built without
-                permission.
+                Minimal.
                 <br />
-                Designed with
-                intention.
+                But emotionally rich.
               </h2>
 
               <p
@@ -1000,6 +720,7 @@ export default function DieCremeCaseStudy({
               </p>
 
               <div className="mt-12 flex justify-center">
+
                 <Link
                   href={project.liveUrl}
                   target="_blank"
@@ -1012,7 +733,6 @@ export default function DieCremeCaseStudy({
                     border-b
                     border-white/20
                     pb-1
-                    font-mono-label
                     text-[10px]
                     uppercase
                     tracking-[0.22em]
