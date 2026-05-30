@@ -20,6 +20,7 @@ export const templateCategories: TemplateCategory[] = [
     href: '/work/vertex/fashion-boutiques',
     aspect: 'portrait',
   },
+  
   {
     slug: 'wellness-brands',
     category: 'Wellness Brand',
@@ -30,5 +31,9 @@ export const templateCategories: TemplateCategory[] = [
     href: '/work/vertex/wellness-brands',
     aspect: 'portrait',
   },
+
+  
+  
+  
   
 ]

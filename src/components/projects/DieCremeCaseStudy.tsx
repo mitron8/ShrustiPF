@@ -424,7 +424,7 @@ export default function DieCremeCaseStudy({
                   font-light
                   leading-[0.9]
                   tracking-[-0.05em]
-                  text-[clamp(2.5rem,8vw,6.5rem)]
+                  text-[clamp(2.5rem,3vw,6.5rem)]
                 "
               />
             </Reveal>
@@ -717,8 +717,9 @@ export default function DieCremeCaseStudy({
 
         {/* PALETTE */}
         {/* PALETTE */}
-<section className="px-4 py-24 sm:px-6 md:px-10 lg:px-16 lg:py-40">
-  <div className="mx-auto max-w-7xl">
+{/* PALETTE */}
+<section className="px-4 py-24 sm:px-6 md:px-10 lg:px-16 lg:py-32">
+  <div className="mx-auto max-w-6xl">
 
     {/* LABEL */}
     <Reveal>
@@ -732,160 +733,176 @@ export default function DieCremeCaseStudy({
       <h2
         className="
           mt-6
-          max-w-5xl
+          max-w-4xl
           font-editorial
           font-light
-          leading-[0.9]
+          leading-[0.92]
           tracking-[-0.05em]
-          text-[clamp(2.5rem,7vw,5.5rem)]
+          text-[clamp(2.2rem,6vw,4.8rem)]
         "
       >
-        A grounded palette
-        crafted for depth,
-        emotion, and premium
-        digital storytelling.
+        Crafted with warmth,
+        depth, and editorial
+        balance.
       </h2>
     </Reveal>
 
-    {/* GRID */}
-    <div className="mt-16 grid grid-cols-2 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+    {/* CONTAINER CARD */}
+    <Reveal delay={0.12}>
+      <div
+        className="
+          mt-14
+          rounded-[38px]
+          border
+          p-6
+          md:p-8
+          lg:p-10
+        "
+        style={{
+          borderColor:
+            'rgba(255,255,255,0.08)',
 
-      {project.page.palette.map((item, i) => (
-        <Reveal
-          key={item.name}
-          delay={i * 0.05}
-        >
-          <motion.div
-            whileHover={{
-              y: -6,
-            }}
-            transition={{
-              duration: 0.8,
-              ease,
-            }}
-            className="
-              group
-              flex
-              items-center
-              gap-5
-              rounded-[28px]
-              border
-              p-5
-            "
-            style={{
-              borderColor:
-                'rgba(255,255,255,0.08)',
+          background:
+            'rgba(255,255,255,0.02)',
 
-              background:
-                'rgba(255,255,255,0.02)',
+          backdropFilter:
+            'blur(18px)',
+        }}
+      >
+        {/* GRID */}
+        <div className="grid gap-5 md:grid-cols-2">
 
-              backdropFilter:
-                'blur(10px)',
-            }}
-          >
-            {/* COLOR PREVIEW */}
-            <motion.div
-              whileHover={{
-                scale: 1.05,
-                rotate: -2,
-              }}
-              transition={{
-                duration: 0.5,
-              }}
-              className="
-                relative
-                h-20
-                w-20
-                shrink-0
-                overflow-hidden
-                rounded-2xl
-                border
-              "
-              style={{
-                background: item.value,
-
-                borderColor:
-                  'rgba(255,255,255,0.08)',
-              }}
-            >
-              {/* LIGHT */}
-              <div
-                className="absolute inset-0"
-                style={{
-                  background:
-                    'linear-gradient(to bottom right, rgba(255,255,255,0.18), transparent 60%)',
-                }}
-              />
-            </motion.div>
-
-            {/* DETAILS */}
-            <div className="min-w-0 flex-1">
-
-              <p
-                className="
-                  font-mono-label
-                  text-[10px]
-                  uppercase
-                  tracking-[0.2em]
-                "
-                style={{
-                  color:
-                    'rgba(244,241,234,0.42)',
-                }}
+          {project.page.palette.map(
+            (item, i) => (
+              <Reveal
+                key={item.name}
+                delay={i * 0.05}
               >
-                COLOR SYSTEM
-              </p>
+                <motion.div
+                  whileHover={{
+                    y: -4,
+                  }}
+                  transition={{
+                    duration: 0.8,
+                    ease,
+                  }}
+                  className="
+                    group
+                    rounded-[26px]
+                    border
+                    p-5
+                  "
+                  style={{
+                    borderColor:
+                      'rgba(255,255,255,0.06)',
 
-              <h3
-                className="
-                  mt-2
-                  font-editorial
-                  text-[clamp(1.5rem,3vw,2.3rem)]
-                  font-light
-                  leading-none
-                  tracking-[-0.04em]
-                "
-                style={{
-                  color:
-                    'var(--text-primary)',
-                }}
-              >
-                {item.name}
-              </h3>
+                    background:
+                      'rgba(255,255,255,0.018)',
+                  }}
+                >
+                  <div className="flex items-start gap-5">
 
-              <p
-                className="
-                  mt-2
-                  text-sm
-                  font-medium
-                "
-                style={{
-                  color:
-                    'rgba(244,241,234,0.78)',
-                }}
-              >
-                {item.value}
-              </p>
+                    {/* COLOR */}
+                    <motion.div
+                      whileHover={{
+                        scale: 1.04,
+                      }}
+                      transition={{
+                        duration: 0.5,
+                      }}
+                      className="
+                        relative
+                        h-20
+                        w-20
+                        shrink-0
+                        overflow-hidden
+                        rounded-2xl
+                        border
+                      "
+                      style={{
+                        background:
+                          item.value,
 
-              <p
-                className="
-                  mt-3
-                  max-w-[260px]
-                  text-sm
-                  leading-relaxed
-                "
-                style={{
-                  color:
-                    'rgba(244,241,234,0.52)',
-                }}
-              >
-                {item.note}
-              </p>
-            </div>
-          </motion.div>
-        </Reveal>
-      ))}
-    </div>
+                        borderColor:
+                          'rgba(255,255,255,0.08)',
+                      }}
+                    >
+                      <div
+                        className="absolute inset-0"
+                        style={{
+                          background:
+                            'linear-gradient(to bottom right, rgba(255,255,255,0.16), transparent 60%)',
+                        }}
+                      />
+                    </motion.div>
+
+                    {/* CONTENT */}
+                    <div className="min-w-0">
+
+                      <p
+                        className="
+                          font-mono-label
+                          text-[9px]
+                          uppercase
+                          tracking-[0.18em]
+                        "
+                        style={{
+                          color:
+                            'rgba(244,241,234,0.38)',
+                        }}
+                      >
+                        COLOR SYSTEM
+                      </p>
+
+                      <h3
+                        className="
+                          mt-2
+                          font-editorial
+                          text-[clamp(1.4rem,2vw,2rem)]
+                          font-light
+                          leading-none
+                          tracking-[-0.04em]
+                        "
+                      >
+                        {item.name}
+                      </h3>
+
+                      <p
+                        className="
+                          mt-2
+                          text-sm
+                        "
+                        style={{
+                          color:
+                            'rgba(244,241,234,0.76)',
+                        }}
+                      >
+                        {item.value}
+                      </p>
+
+                      <p
+                        className="
+                          mt-3
+                          max-w-[260px]
+                          text-[13px]
+                          leading-relaxed
+                        "
+                        style={{
+                          color:
+                            'rgba(244,241,234,0.5)',
+                        }}
+                      >
+                        {item.note}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              </Reveal>
+            )
+          )}
+        </div>
+      </div>
+    </Reveal>
   </div>
 </section>
 
