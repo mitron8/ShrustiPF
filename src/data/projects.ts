@@ -15,11 +15,39 @@ export interface ProjectPageContent {
   challenge: string
   strategy: string
   process: string
+
   typography: string[]
+
   palette: ProjectPaletteSwatch[]
+
   showcases: ProjectMedia[]
+
   gallery: ProjectMedia[]
+
   outcomes: string[]
+
+  decisions?: {
+    title: string
+    description: string
+  }[]
+
+  comparison?: {
+    title: string
+
+    left: {
+      name: string
+      style: string
+    }
+
+    right: {
+      name: string
+      style: string
+    }
+
+    conclusion: string
+  }
+
+  closing?: string
 }
 
 export interface Project {
