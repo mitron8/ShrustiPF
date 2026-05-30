@@ -1,644 +1,219 @@
 'use client'
 
-import {
-  motion,
-  useScroll,
-  useMotionValueEvent,
-  AnimatePresence,
-} from 'framer-motion'
-
-import {
-  useRef,
-  useState,
-  useEffect,
-} from 'react'
-
-import Image from 'next/image'
-
+import { useState } from 'react'
+import { motion } from 'framer-motion'
+import FadeIn from '@/components/motion/FadeIn'
+import BackToHomeLink from '@/components/layout/BackToHomeLink'
 import { projects } from '@/data/projects'
-
+import Image from 'next/image'
+import BlurReveal from '@/components/motion/BlurReveal'
 import ProjectActions from '@/components/projects/ProjectActions'
 
-// ─────────────────────────────────────────────
-// CONSTANTS
-// ─────────────────────────────────────────────
-
-const ease = [0.22, 1, 0.36, 1] as const
-
-type Project = (typeof projects)[number]
-
-// ─────────────────────────────────────────────
-// HELPERS
-// ─────────────────────────────────────────────
-
-function getDisplayProject(
-  project: Project
-) {
-  if (project.slug !== 'vertex')
-    return project
-
-  return {
-    ...project,
-    title:
-      'Editorial Brand Templates',
-    shortDescription:
-      'Scroll-stopping posts, brand kits, and digital assets designed to elevate how modern brands present themselves online.',
-    tags: [
-      'UI DESIGN',
-      'FIGMA',
-      'BRAND SYSTEM',
-      'SOCIAL',
-      'CANVA',
-    ],
-  }
+interface WorkProps {
+  standalone?: boolean
+  showBackHome?: boolean
 }
 
-function getOverrides(
-  project: Project
-) {
-  const isBerlin =
-    project.slug ===
-    'die-creme-berlin'
+export default function Work({ standalone = false, showBackHome = false }: WorkProps) {
+  const [activeProjectId, setActiveProjectId] = useState(projects[0]?.id ?? null)
+  const activeProject = projects.find((project) => project.id === activeProjectId) ?? projects[0]
+  const getDisplayProject = (project: typeof projects[number]) => {
+    if (project.slug !== 'vertex') return project
 
-  return {
-    tags: isBerlin
-      ? [
-          'NEXT.JS',
-          'UI DESIGN',
-          'PRO BONO',
-        ]
-      : getDisplayProject(
-          project
-        ).tags.slice(0, 4),
-
-    description: isBerlin
-      ? 'A Berlin café website — original brand, full build, zero templates.'
-      : getDisplayProject(project)
-          .shortDescription,
+    return {
+      ...project,
+      title: 'Editorial Brand Templates',
+      shortDescription:
+        'Scroll-stopping posts, brand kits, and digital assets - designed to show what your brand could look like when the visuals actually do the work.',
+      tags: ['UI DESIGN', 'FIGMA', 'BRAND TEMPLATES', 'SOCIAL-MEDIA', 'CANVA'],
+      category: '',
+      year: '',
+      projectNotes:
+        'Scroll-stopping posts, brand kits, and digital assets designed as an archive of what a sharper brand system could look like across social and launch surfaces.',
+    }
   }
-}
-
-// ─────────────────────────────────────────────
-// CARD CONTENT
-// ─────────────────────────────────────────────
-
-function CardContent({
-  project,
-}: {
-  project: Project
-}) {
-  const { tags, description } =
-    getOverrides(project)
+  const activeDisplayProject = getDisplayProject(activeProject)
 
   return (
-    <motion.div
-      key={`content-${project.id}`}
-      initial={{
-        opacity: 0,
-        y: 24,
-        filter: 'blur(6px)',
-      }}
-      animate={{
-        opacity: 1,
-        y: 0,
-        filter: 'blur(0px)',
-      }}
-      exit={{
-        opacity: 0,
-        y: -8,
-        filter: 'blur(4px)',
-      }}
-      transition={{
-        duration: 0.8,
-        delay: 0.08,
-        ease,
-      }}
-    >
-      {/* DESCRIPTION */}
-      <p
-        className="
-          mt-5
-          max-w-xl
-          text-sm
-          leading-relaxed
-          sm:text-base
-        "
-        style={{
-          color:
-            'rgba(244,241,234,0.72)',
-        }}
-      >
-        {description}
-      </p>
+    <section className="px-8 py-24 md:px-16 md:py-32" aria-labelledby={standalone ? 'selected-work-page-title' : 'selected-work-home-title'}>
+      {showBackHome ? (
+        <FadeIn>
+          <div className="mb-10 md:mb-12">
+            <BackToHomeLink />
+          </div>
+        </FadeIn>
+      ) : null}
 
-      {/* TAGS */}
-      <div className="mt-5 flex flex-wrap gap-2">
-        {tags.map((tag, ti) => (
-          <motion.span
-            key={tag}
-            initial={{
-              opacity: 0,
-              scale: 0.9,
-              y: 8,
-            }}
-            animate={{
-              opacity: 1,
-              scale: 1,
-              y: 0,
-            }}
-            transition={{
-              delay:
-                0.16 + ti * 0.05,
-              duration: 0.5,
-              ease,
-            }}
-            className="
-              rounded-full
-              px-2 py-1
-              font-mono-label
-              text-[8px]
-              uppercase
-              tracking-[0.14em]
-            "
-            style={{
-              color:
-                'rgba(244,241,234,0.68)',
-              border:
-                '1px solid rgba(255,255,255,0.09)',
-              background:
-                'rgba(255,255,255,0.03)',
-            }}
-          >
-            {tag}
-          </motion.span>
-        ))}
+      <div className="mb-16 flex flex-col gap-6 md:mb-20 lg:flex-row lg:items-end lg:justify-between">
+        <div className="max-w-3xl">
+          <FadeIn>
+            <p className="mb-6 font-mono-label text-[12px] uppercase tracking-[0.25em]" style={{ color: 'rgba(244, 241, 234, 0.8)' }}>
+              WORK I&apos;M PROUD OF
+            </p>
+          </FadeIn>
+          <BlurReveal delay={0.08}>
+            <h2
+              id={standalone ? 'selected-work-page-title' : 'selected-work-home-title'}
+              className="whitespace-nowrap font-editorial font-light leading-[0.95] tracking-[-0.02em]"
+              style={{ fontSize: 'clamp(2.25rem, 6vw, 5.5rem)', color: 'var(--text-primary)' }}
+            >
+              Every pixel had a reason.
+            </h2>
+          </BlurReveal>
+        </div>
+
+        <FadeIn delay={0.14}>
+          <p className="max-w-md text-sm font-light leading-relaxed md:text-base" style={{ color: 'var(--text-secondary)' }}>
+            No templates. No shortcuts. Just research, strategy, and code working together from day one.
+          </p>
+        </FadeIn>
       </div>
 
-      {/* ACTIONS */}
-      <motion.div
-        className="mt-8"
-        initial={{
-          opacity: 0,
-          y: 6,
-        }}
-        animate={{
-          opacity: 1,
-          y: 0,
-        }}
-        transition={{
-          delay: 0.28,
-          duration: 0.7,
-          ease,
-        }}
-      >
-        <ProjectActions
-          liveUrl={project.liveUrl}
-          caseStudyHref={`/work/${project.slug}`}
-          showLiveSite={
-            project.slug !== 'vertex'
-          }
-          caseStudyLabel={
-            project.slug === 'vertex'
-              ? 'VIEW ARCHIVE ↗'
-              : undefined
-          }
-        />
-      </motion.div>
-    </motion.div>
-  )
-}
-
-// ─────────────────────────────────────────────
-// IMAGE PANEL
-// ─────────────────────────────────────────────
-
-function ImagePanel({
-  project,
-  isActive,
-}: {
-  project: Project
-  isActive: boolean
-}) {
-  return (
-    <motion.div
-      animate={{
-        opacity: isActive
-          ? 1
-          : 0.45,
-
-        scale: isActive
-          ? 1
-          : 1.02,
-      }}
-      transition={{
-        duration: 0.9,
-        ease,
-      }}
-      className="
-        relative
-        hidden
-        min-h-[260px]
-        overflow-hidden
-        lg:block
-      "
-    >
-      <Image
-        src={project.image}
-        alt={project.imageAlt}
-        fill
-        className="object-cover"
-        sizes="40vw"
-      />
-
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            'linear-gradient(90deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.06) 48%, rgba(0,0,0,0.3) 100%)',
-        }}
-      />
-    </motion.div>
-  )
-}
-
-// ─────────────────────────────────────────────
-// MAIN COMPONENT
-// ─────────────────────────────────────────────
-
-export default function Work() {
-  const [activeProjectId, setActiveProjectId] =
-    useState(projects[0]?.id)
-
-  const [manualOverride, setManualOverride] =
-    useState(false)
-
-  const projectRefs = useRef<
-    (HTMLElement | null)[]
-  >([])
-
-  const timeoutRef =
-    useRef<NodeJS.Timeout | null>(
-      null
-    )
-
-  const triggerRef = useRef(0)
-
-  const { scrollY } = useScroll()
-
-  // ─────────────────────────────────────
-  // WINDOW HEIGHT CACHE
-  // ─────────────────────────────────────
-
-  useEffect(() => {
-    const updateTrigger = () => {
-      triggerRef.current =
-        window.innerHeight * 0.45
-    }
-
-    updateTrigger()
-
-    window.addEventListener(
-      'resize',
-      updateTrigger
-    )
-
-    return () => {
-      window.removeEventListener(
-        'resize',
-        updateTrigger
-      )
-
-      if (timeoutRef.current) {
-        clearTimeout(
-          timeoutRef.current
-        )
-      }
-    }
-  }, [])
-
-  // ─────────────────────────────────────
-  // SCROLL DETECTION
-  // ─────────────────────────────────────
-
-  useMotionValueEvent(
-    scrollY,
-    'change',
-    () => {
-      if (manualOverride) return
-
-      const trigger =
-        triggerRef.current
-
-      let currentId =
-        projects[0]?.id
-
-      projectRefs.current.forEach(
-        (el, i) => {
-          if (!el) return
-
-          const rect =
-            el.getBoundingClientRect()
-
-          if (
-            rect.top <= trigger
-          ) {
-            currentId =
-              projects[i].id
-          }
-        }
-      )
-
-      setActiveProjectId((prev) =>
-        prev !== currentId
-          ? currentId
-          : prev
-      )
-    }
-  )
-
-  // ─────────────────────────────────────
-  // CLICK EXPAND
-  // ─────────────────────────────────────
-
-  const handleExpand = (
-    projectId: string
-  ) => {
-    setManualOverride(true)
-
-    setActiveProjectId(projectId)
-
-    const index =
-      projects.findIndex(
-        (p) => p.id === projectId
-      )
-
-    const target =
-      projectRefs.current[index]
-
-    target?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'center',
-    })
-
-    if (timeoutRef.current) {
-      clearTimeout(
-        timeoutRef.current
-      )
-    }
-
-    timeoutRef.current =
-      setTimeout(() => {
-        setManualOverride(false)
-      }, 1600)
-  }
-
-  return (
-    <section
-      className="
-        relative
-        overflow-hidden
-        bg-black
-        px-4
-        py-20
-        sm:px-6
-        md:px-10
-        md:py-28
-        xl:px-16
-      "
-    >
-      {/* DARK OVERLAY */}
-      <div className="absolute inset-0 z-[1] bg-black/40" />
-
-      {/* CONTENT */}
-      <div className="relative z-10 space-y-5">
-        {projects.map(
-          (project, i) => {
-            const isActive =
-              activeProjectId ===
-              project.id
-
-            const dp =
-              getDisplayProject(
-                project
-              )
+      <div className="grid gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)] lg:items-start">
+        <div>
+          {projects.map((project, i) => {
+            const isActive = activeProject?.id === project.id
+            const displayProject = getDisplayProject(project)
 
             return (
-              <motion.article
-                layout
-                key={project.id}
-                ref={(el) => {
-                  projectRefs.current[
-                    i
-                  ] = el
-                }}
-                onClick={() =>
-                  handleExpand(
-                    project.id
-                  )
-                }
-                initial={{
-                  opacity: 0,
-                  y: 32,
-                  scale: 0.99,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                  scale: 1,
-                }}
-                viewport={{
-                  once: true,
-                  margin:
-                    '-6% 0px',
-                }}
-                transition={{
-                  duration: 0.9,
-                  delay: i * 0.05,
-                  ease,
-                }}
-                className="
-                  group
-                  relative
-                  min-h-[160px]
-                  cursor-pointer
-                  overflow-hidden
-                  rounded-[28px]
-                  border
-                  sm:rounded-[34px]
-                "
-                style={{
-                  borderColor:
-                    isActive
-                      ? 'rgba(244,241,234,0.13)'
-                      : 'rgba(255,255,255,0.05)',
-
-                  background:
-                    isActive
-                      ? 'rgba(255,255,255,0.02)'
-                      : 'rgba(255,255,255,0.008)',
-
-                  backdropFilter:
-                    'blur(8px)',
-                }}
-              >
-                <motion.div
-                  transition={{
-                    duration: 0.8,
-                    ease,
+              <FadeIn key={project.id} delay={i * 0.08}>
+                <article
+                  className="group grid gap-4 py-7 md:grid-cols-[auto_minmax(0,1fr)_auto] md:gap-8 md:py-9"
+                  onMouseEnter={() => setActiveProjectId(project.id)}
+                  onFocusCapture={() => setActiveProjectId(project.id)}
+                  style={{
+                    borderTop: '1px solid var(--border-subtle)',
+                    background: isActive ? 'linear-gradient(90deg, rgba(244, 241, 234, 0.03), transparent 58%)' : 'transparent',
                   }}
-                  className="grid h-full lg:grid-cols-[1.1fr_0.9fr]"
                 >
-                  {/* LEFT */}
-                  <div
-                    className="
-                      relative
-                      flex
-                      h-full
-                      min-h-[580px]
-                      flex-col
-                      justify-between
-                      p-5
-                      sm:p-6
-                      md:p-8
-                    "
-                  >
-                    {/* TOP */}
-                    <div className="flex items-start justify-between gap-6">
+                  <span className="mt-1 font-mono-label text-[10px] tracking-[0.2em]" style={{ color: 'var(--text-muted)' }}>
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
 
-                      <span
-                        className="
-                          font-mono-label
-                          text-[10px]
-                          tracking-[0.22em]
-                        "
-                        style={{
-                          color:
-                            'rgba(244,241,234,0.68)',
-                        }}
-                      >
-                        {String(
-                          i + 1
-                        ).padStart(
-                          2,
-                          '0'
-                        )}
-                      </span>
-
-                      <span
-                        className="
-                          font-mono-label
-                          text-[9px]
-                          uppercase
-                          tracking-[0.18em]
-                        "
-                        style={{
-                          color:
-                            'rgba(244,241,234,0.52)',
-                        }}
-                      >
-                        {
-                          project.category
-                        }
-                      </span>
-                    </div>
-
-                    {/* CONTENT */}
-                    <div className="max-w-3xl">
-
+                  <div className="space-y-4">
+                    <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between md:gap-6">
                       <h3
-                        className="
-                          font-editorial
-                          font-light
-                          leading-[0.9]
-                          tracking-[-0.05em]
-                        "
+                        className={
+                          project.slug === 'die-creme-berlin' || project.slug === 'prism'
+                            ? 'whitespace-nowrap font-editorial font-light leading-tight transition-colors duration-700'
+                            : 'font-editorial font-light leading-tight transition-colors duration-700'
+                        }
                         style={{
                           fontSize:
-                            isActive
-                              ? 'clamp(2.3rem,5vw,5rem)'
-                              : 'clamp(1.4rem,3vw,2.4rem)',
-
-                          color:
-                            'var(--text-primary)',
+                            project.slug === 'die-creme-berlin'
+                              ? 'clamp(1.6rem, 2.9vw, 2.9rem)'
+                              : project.slug === 'prism'
+                                ? 'clamp(1.55rem, 2.8vw, 2.85rem)'
+                                : 'clamp(1.65rem, 3vw, 3rem)',
+                          color: 'var(--text-primary)',
                         }}
                       >
-                        {dp.title}
+                        {displayProject.title}
                       </h3>
-
-                      <AnimatePresence initial={false}>
-                        {isActive && (
-                          <CardContent
-                            key={
-                              project.id
-                            }
-                            project={
-                              project
-                            }
-                          />
-                        )}
-                      </AnimatePresence>
+                      {project.slug === 'prism' || project.slug === 'die-creme-berlin' || project.slug === 'vertex' ? null : (
+                        <p className="font-mono-label text-[9px] uppercase tracking-[0.15em]" style={{ color: 'var(--text-muted)' }}>
+                          {`${project.category} — ${project.year}`}
+                        </p>
+                      )}
                     </div>
 
-                    {/* MOBILE IMAGE */}
-                    {isActive && (
-                      <motion.div
-                        initial={{
-                          opacity: 0,
-                          y: 24,
-                        }}
-                        animate={{
-                          opacity: 1,
-                          y: 0,
-                        }}
-                        transition={{
-                          duration: 0.7,
-                          ease,
-                        }}
-                        className="
-                          relative
-                          mt-6
-                          h-[260px]
-                          overflow-hidden
-                          rounded-[20px]
-                          sm:h-[300px]
-                          lg:hidden
-                        "
-                      >
-                        <Image
-                          src={
-                            project.image
-                          }
-                          alt={
-                            project.imageAlt
-                          }
-                          fill
-                          className="
-                            object-cover
-                            object-center
-                          "
-                        />
+                    <p
+                      id={`project-summary-${project.id}`}
+                      className="max-w-xl text-sm font-light leading-relaxed md:text-base"
+                      style={{ color: isActive ? 'var(--text-secondary)' : 'rgba(184, 184, 184, 0.82)' }}
+                    >
+                      {project.slug === 'die-creme-berlin'
+                        ? "A Berlin café website - original brand, full build, zero templates. The kind of site most restaurants don't know they need."
+                        : displayProject.shortDescription}
+                    </p>
 
-                        <div
-                          className="absolute inset-0"
-                          style={{
-                            background:
-                              'linear-gradient(to top, rgba(0,0,0,0.55), transparent)',
-                          }}
-                        />
-                      </motion.div>
-                    )}
+                    <div className="flex flex-wrap gap-2">
+                      {(project.slug === 'die-creme-berlin'
+                        ? ['WEB DESIGN', 'NEXT.JS', 'UI DESIGN', 'PRO BONO']
+                        : displayProject.tags
+                      ).map((tag) => (
+                        <span
+                          key={tag}
+                          className="font-mono-label text-[9px] uppercase tracking-[0.15em] px-2 py-1"
+                          style={{ color: 'var(--text-muted)', border: '1px solid var(--border-subtle)' }}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
 
-                  {/* RIGHT IMAGE */}
-                  <ImagePanel
-                    project={project}
-                    isActive={isActive}
+                  <ProjectActions
+                    liveUrl={project.liveUrl}
+                    caseStudyHref={`/work/${project.slug}`}
+                    showLiveSite={project.slug !== 'vertex'}
+                    caseStudyLabel={project.slug === 'vertex' ? 'VIEW ARCHIVE ↗' : undefined}
+                    className="md:self-center md:justify-self-end"
+                  />
+                </article>
+              </FadeIn>
+            )
+          })}
+          <div className="h-px" style={{ background: 'var(--border-subtle)' }} />
+        </div>
+
+        {activeProject ? (
+          <FadeIn className="hidden lg:block lg:sticky lg:top-28">
+            <div className="glass overflow-hidden rounded-[28px] p-4">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[20px]">
+                <motion.div
+                  key={activeProject.id}
+                  className="absolute inset-0"
+                  initial={{ opacity: 0, scale: 1.04 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <Image
+                    src={activeProject.image}
+                    alt={activeProject.imageAlt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 36vw"
                   />
                 </motion.div>
-              </motion.article>
-            )
-          }
-        )}
+              </div>
+
+              <div className="space-y-5 px-1 pt-5">
+                <div className="space-y-2">
+                  {activeProject.slug === 'vertex' ? null : (
+                    <p className="font-mono-label text-[9px] uppercase tracking-[0.15em]" style={{ color: 'var(--text-muted)' }}>
+                      {activeDisplayProject.category}
+                    </p>
+                  )}
+                  <h3 className="font-editorial text-[2rem] font-light leading-tight" style={{ color: 'var(--text-primary)' }}>
+                    {activeDisplayProject.title}
+                  </h3>
+                </div>
+
+                <p className="text-sm font-light leading-relaxed md:text-base" style={{ color: 'var(--text-secondary)' }}>
+                  {activeDisplayProject.projectNotes}
+                </p>
+
+                <div className="grid gap-3 sm:grid-cols-3">
+                  {[
+                    { label: 'Focus', value: activeProject.focus },
+                    { label: 'Scope', value: activeProject.scope },
+                    { label: 'Result', value: activeProject.result },
+                  ].map((metric) => (
+                    <div key={metric.label} className="rounded-[18px] p-3" style={{ border: '1px solid var(--border-subtle)' }}>
+                      <p className="font-mono-label text-[8px] uppercase tracking-[0.18em]" style={{ color: 'var(--text-muted)' }}>
+                        {metric.label}
+                      </p>
+                      <p className="mt-2 text-sm font-light leading-relaxed" style={{ color: 'var(--text-primary)' }}>
+                        {metric.value}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </FadeIn>
+        ) : null}
       </div>
     </section>
   )
