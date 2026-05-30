@@ -10,6 +10,7 @@ import {
 import {
   useRef,
   useState,
+  useEffect,
 } from 'react'
 
 import Image from 'next/image'
@@ -94,8 +95,8 @@ function CardContent({
       key={`content-${project.id}`}
       initial={{
         opacity: 0,
-        y: 28,
-        filter: 'blur(8px)',
+        y: 24,
+        filter: 'blur(6px)',
       }}
       animate={{
         opacity: 1,
@@ -104,12 +105,12 @@ function CardContent({
       }}
       exit={{
         opacity: 0,
-        y: -10,
-        filter: 'blur(5px)',
+        y: -8,
+        filter: 'blur(4px)',
       }}
       transition={{
-        duration: 1,
-        delay: 0.12,
+        duration: 0.8,
+        delay: 0.08,
         ease,
       }}
     >
@@ -137,8 +138,8 @@ function CardContent({
             key={tag}
             initial={{
               opacity: 0,
-              scale: 0.82,
-              y: 10,
+              scale: 0.9,
+              y: 8,
             }}
             animate={{
               opacity: 1,
@@ -147,8 +148,8 @@ function CardContent({
             }}
             transition={{
               delay:
-                0.24 + ti * 0.08,
-              duration: 0.8,
+                0.16 + ti * 0.05,
+              duration: 0.5,
               ease,
             }}
             className="
@@ -178,15 +179,15 @@ function CardContent({
         className="mt-8"
         initial={{
           opacity: 0,
-          y: 8,
+          y: 6,
         }}
         animate={{
           opacity: 1,
           y: 0,
         }}
         transition={{
-          delay: 0.42,
-          duration: 1,
+          delay: 0.28,
+          duration: 0.7,
           ease,
         }}
       >
@@ -227,10 +228,10 @@ function ImagePanel({
 
         scale: isActive
           ? 1
-          : 1.04,
+          : 1.02,
       }}
       transition={{
-        duration: 2,
+        duration: 0.9,
         ease,
       }}
       className="
@@ -275,7 +276,45 @@ export default function Work() {
     (HTMLElement | null)[]
   >([])
 
+  const timeoutRef =
+    useRef<NodeJS.Timeout | null>(
+      null
+    )
+
+  const triggerRef = useRef(0)
+
   const { scrollY } = useScroll()
+
+  // ─────────────────────────────────────
+  // WINDOW HEIGHT CACHE
+  // ─────────────────────────────────────
+
+  useEffect(() => {
+    const updateTrigger = () => {
+      triggerRef.current =
+        window.innerHeight * 0.45
+    }
+
+    updateTrigger()
+
+    window.addEventListener(
+      'resize',
+      updateTrigger
+    )
+
+    return () => {
+      window.removeEventListener(
+        'resize',
+        updateTrigger
+      )
+
+      if (timeoutRef.current) {
+        clearTimeout(
+          timeoutRef.current
+        )
+      }
+    }
+  }, [])
 
   // ─────────────────────────────────────
   // SCROLL DETECTION
@@ -288,7 +327,7 @@ export default function Work() {
       if (manualOverride) return
 
       const trigger =
-        window.innerHeight * 0.45
+        triggerRef.current
 
       let currentId =
         projects[0]?.id
@@ -309,14 +348,11 @@ export default function Work() {
         }
       )
 
-      if (
-        currentId !==
-        activeProjectId
-      ) {
-        setActiveProjectId(
-          currentId
-        )
-      }
+      setActiveProjectId((prev) =>
+        prev !== currentId
+          ? currentId
+          : prev
+      )
     }
   )
 
@@ -344,9 +380,16 @@ export default function Work() {
       block: 'center',
     })
 
-    setTimeout(() => {
-      setManualOverride(false)
-    }, 2200)
+    if (timeoutRef.current) {
+      clearTimeout(
+        timeoutRef.current
+      )
+    }
+
+    timeoutRef.current =
+      setTimeout(() => {
+        setManualOverride(false)
+      }, 1600)
   }
 
   return (
@@ -364,7 +407,7 @@ export default function Work() {
       "
     >
       {/* DARK OVERLAY */}
-      <div className="absolute inset-0 bg-black/40 z-[1]" />
+      <div className="absolute inset-0 z-[1] bg-black/40" />
 
       {/* CONTENT */}
       <div className="relative z-10 space-y-5">
@@ -395,8 +438,8 @@ export default function Work() {
                 }
                 initial={{
                   opacity: 0,
-                  y: 44,
-                  scale: 0.984,
+                  y: 32,
+                  scale: 0.99,
                 }}
                 whileInView={{
                   opacity: 1,
@@ -409,8 +452,8 @@ export default function Work() {
                     '-6% 0px',
                 }}
                 transition={{
-                  duration: 1.8,
-                  delay: i * 0.08,
+                  duration: 0.9,
+                  delay: i * 0.05,
                   ease,
                 }}
                 className="
@@ -423,11 +466,6 @@ export default function Work() {
                   border
                   sm:rounded-[34px]
                 "
-                animate={{
-                  height: isActive
-                    ? 'auto'
-                    : 160,
-                }}
                 style={{
                   borderColor:
                     isActive
@@ -440,12 +478,12 @@ export default function Work() {
                       : 'rgba(255,255,255,0.008)',
 
                   backdropFilter:
-                    'blur(14px)',
+                    'blur(8px)',
                 }}
               >
                 <motion.div
                   transition={{
-                    duration: 1.45,
+                    duration: 0.8,
                     ease,
                   }}
                   className="grid h-full lg:grid-cols-[1.1fr_0.9fr]"
@@ -527,7 +565,7 @@ export default function Work() {
                         {dp.title}
                       </h3>
 
-                      <AnimatePresence mode="wait">
+                      <AnimatePresence initial={false}>
                         {isActive && (
                           <CardContent
                             key={
@@ -546,14 +584,14 @@ export default function Work() {
                       <motion.div
                         initial={{
                           opacity: 0,
-                          y: 40,
+                          y: 24,
                         }}
                         animate={{
                           opacity: 1,
                           y: 0,
                         }}
                         transition={{
-                          duration: 1.2,
+                          duration: 0.7,
                           ease,
                         }}
                         className="
